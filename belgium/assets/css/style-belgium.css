@@ -1,0 +1,82 @@
+body{
+    background-color: darkslategray;
+    font-family: 'Open Sans', sans-serif;
+}
+path{
+    transition: 0.3s;
+    fill: rgb(129, 177, 153);
+}
+.liste .is-active p{
+    font-size: 25px;
+    color: rgb(107, 45, 41);
+    font-weight: 900;
+    text-decoration: none;
+    transition: color 0.7s;
+    transition: font-size 0.7s;
+}
+.carte .is-active path{
+    fill: rgb(41, 107, 74);
+    transition: fill 0.9s;
+}
+
+/* 700 */
+.titre{
+    text-align: center;
+}
+h1{
+    padding-top: 30px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+h3{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+p{
+    margin-bottom: 0.2rem;
+}
+ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+.liste{
+    text-align: center;
+}
+.carte700{
+    color: white;
+    display: block;
+}
+.carte500{
+    display: none;
+}
+.carte300{
+    display: none;
+}
+/* 500 */
+@media screen and (max-width: 800px) {
+
+    .carte700{
+        display: none;
+    }
+    .carte500{
+        color: white;
+        display: block;
+    }
+    .carte300{
+        display: none;
+    }
+}
+/* 300 */
+@media screen and (max-width: 640px) {
+
+    .carte700{
+        display: none;
+    }
+    .carte500{
+        display: none;
+    }
+    .carte300{
+        color: white;
+        display: block;
+    }
+}
