@@ -44,7 +44,7 @@
                         <li id="list-b"><p>Namur</p></li>
                         <li id="list-c"><p>Luxemburg</p></li>
                         <li id="list-d"><p>Liege</p></li>
-                        <li id="list-e"><p>lumburd</p></li>
+                        <li id="list-e"><p>Limburg</p></li>
                         <li id="list-f"><p>Anvers</p></li>
                         <li id="list-g"><p>Flandre occidental</p></li>
                         <li id="list-h"><p>Flandre oriental</p></li>
@@ -52,10 +52,17 @@
                         <li id="list-j"><p>Braband flamand</p></li>
                         <li id="list-k"><p>Bruxelles</p></li>
                     </ul> 
-                </div>
+                </div> 
             </div>
         </div>
-        
+        <div class="row">
+        <ul>
+        <li>suis je un bon belge?</li>
+        <li><a href="quiz-provinces-test.php">Quelle est cette province?</a> </li>
+        <li>provinces - chefs lieux</li>
+        <li>chefs lieux - provinces</li>
+        </ul>
+        </div>
     </div>
     <div class="description"></div>
 <!-- BOOTSTRAP JS -->

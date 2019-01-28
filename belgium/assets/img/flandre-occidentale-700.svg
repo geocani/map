@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="174.79829"
+   height="187.54985"
+   viewBox="0 0 46.248715 49.622564"
+   version="1.1"
+   id="svg6503"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="flandre-occidentale-700.svg">
+  <defs
+     id="defs6497" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="86.856484"
+     inkscape:cy="87.216"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="950"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     objecttolerance="20"
+     guidetolerance="20"
+     gridtolerance="10" />
+  <metadata
+     id="metadata6500">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-56.143946,-192.30344)">
+    <g
+       id="flandre-west"
+       transform="matrix(0.24324785,0,0,0.24324785,139.01313,221.98376)">
+      <path
+         inkscape:connector-curvature="0"
+         d="m -180.27797,-122.01678 2.51,28.960001 v 0 l -4.14,25.63 9.86,9.68 -15.42,19.02 22.35,15.93 -6.3,27.87001 9.06,4.28 -8.68,11.85 12.14,2.21 -5.05,9.2 13.4,19.07 -12.06,11.76 v 0 l -19.44,17.75 -10.5,-14.04 -25,-0.19 v 0 l -5.29,-10.39 -25.42,5.09 v 0 l -3.62,-11.51 -12.39,5.19 4.61,6.07 -23.17,7.24 4.07,13.33 v 0 l -14.18,-5.94 -12.9,-25.71 -17.04,-0.64 -6.95,-11.43 -1.8,-21.55 8.09,-8.53 -17.14,-43.73001 124.26,-75.040001 0.51,-10.16 2.35,10.63 0.06,-10.88 5.8,7.21 z"
+         id="path2127" />
+    </g>
+  </g>
+</svg>

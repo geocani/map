@@ -1,0 +1,74 @@
+		#################################################
+		#						#
+		#	  QQQ	 U   U  IIIII ZZZZZ ZZZZZ	#
+		#	 Q   Q	 U   U    I      Z     Z	#
+		#	 Q   Q   U   U    I     Z     Z		#
+		#	 Q   Q   U   U    I    Z     Z		#
+		#	  QQQ Q   UUU   IIIII ZZZZZ ZZZZZ	#
+		#						#
+		#################################################
+
+
+merci de lire ce fichier entirement avant toute utilisation.
+
+Voilà la derniere version de mon interface complête de quizz. Elle est (incomparablement) mieux que la précédente.
+Elle fonctionne avec une base de données, et permet de proposer des quizz classés en catégorie.
+Les fonctionnalitées des quizz:
+-10 question, les réponses ne peuvent pas être vues par l'internaute.
+-au bout de 3 essais infructueux, on passe à la question suivante.
+-3 points pour une bonne réponse du 1er coupr, 2 pour une réponse du 2eme courp, 1 pour une réponse au 3eme coup,0 en cas d'échec.
+-message changeant en fonction du nombre de points obtenus sur 30.
+-liste des gagnants dans laquelle on peut s'inscrire à partir de 25 points obtenus (maximum 1 question ratée)
+-les quizz on un niveau de difficulté compris entre 1 et 5
+Chaque quiz peut avoir une texture de fond et une couleur de police différente.
+
+Cette source comprend une interface vous permettant de créer vos quizz rapidement. Cette interface peut être mise en ligne
+pour que les internautes puissent créer leurs propres quizz.
+Vous disposez de la page liste.php, pour voir tous les quizz présents sur le site, et leur contenu.
+
+voyons à quoi correspondent les 7 codes de ce systeme de quizz:
+-creer.php est le script qui permet de créer les quizz.
+-gagne.php est la page qui s'affiche à la fin du quizz. elle comprend la liste des gagnants;
+-inscr.php permet de s'inscrire dans la liste des gagnants (il y a une liste par quizz)
+-liste.php est le code vous permettant de voir les quizz présents sur votre site (pour controler que ce qui à été mis est autorisé)
+-quiz.php fabrique le quizz: il affiche les questions, vérifie les réponses...
+-tests.php est l'index: il fait la liste des quizz, par catégorie. il est indispensable pour lancer quiz.php avec les bonnes
+informations. Il doit être appelé par un lien du type: <a href="quiz.php?cat=ind">aller dans ma rubrique quizz</a>, ce qui 
+permet qu'il fasse la liste des catégories disponibles.
+-variables.php contient les variables personnalisables. IL EST LE SEUL FICHIER QUE VOUS AYEZ A MODIFIER. il contient vos parametres
+des base de donnés, et les titres de vos catégories (dont le nombre est lui aussi personnalisable.)
+-les images sont la texture du fond de toutes les pages ci-dessus (sauf quiz.php, qui affiche la texture correspondant au quizz
+en cours), et l'image représentant le niveau du quiz.
+-le dosser 'gagnants' contient les listes des gagnants de chaque quiz. Ce sont des fichiers au format .txt, crées par creer.php
+
+INSTALLATION:
+-placez la totalité des fichiers dans un dossier de votre site,
+-et modifiez les parametres de mysql et de catégoriesdans variables.php
+-créez une table liste dans votre base de données, avec 3 champs: no (int), nom (text), cat (text).
+-creer une entrée dans la table liste: no=10000; nom=0; pas de valeur dans cat.
+
+
+pour créer un quizz sans l'interface:
+-créez une enntrée dans la table liste, le no suivant la logique; le nom étant le titre du quizz, la cat, sa catégorie
+-incrémentez de 1 la valeur de nom dans l'entrée de la table liste dont le no est 10000
+-créez une table dont le nom est le no du quizz, avec 3 champs: no (int), qu (text), rep(text)
+-remplissez 12 entrées dans cette derniere table: 10 questions avec les no est les réponses, et 1 entrée dont le no est 100
+, la qu est l'url de la texture, et la rep, la couleur du texte, et une entrée no127, qu= url de l'image du quiz, rep= niveau du quiz.
+-créez un fichier txt dont la nom est la no du quizz, dans le dossier gagnants.
+ça fait pas mal de choses à faire, il est donc plus simple d'utiliser l'interface du creer.php.
+
+
+Voilà, j'espère que ce grouppe de scripts vous servira bien. n'hésitez pas à poster vos commentairessur cs, si vous remarquez
+un disfonctionnement, ou pour suggérer une nouvelle fonctionnalité.
+évitez aussi de mettre une mauvaise note à ce code, ça ne fait pas plaisir à quelqu'un qui passe du temps à développer, et qui 
+donne gratuitement le fruit de son travail sur cs.
+
+
+UTILISATION:
+vous pouvez utiliser de script où vous voulez, sauf pour des quizz sur le seigneur des anneaux, ou l'univers de Tolkien. en effet,
+c'est ce pourquoi il à été fait, et je ne le distribue pas pour qu'on me fasse de la concurence.
+
+Vous pouvez voir un exemple d'utilisation sur http://www.gondolin.new.fr/
+
+mes autres sources:
+http://www.phpcs.com/code.aspx?id=24147 : gestionnaire complet de site en ligne.

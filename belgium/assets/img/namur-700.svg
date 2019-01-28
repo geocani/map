@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="197.9754"
+   height="236.56102"
+   viewBox="0 0 52.380992 62.590103"
+   version="1.1"
+   id="svg6503"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="namur-700.svg">
+  <defs
+     id="defs6497" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="123.69717"
+     inkscape:cy="129.38705"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="950"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     objecttolerance="20"
+     guidetolerance="20"
+     gridtolerance="10" />
+  <metadata
+     id="metadata6500">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-82.377936,-204.56182)">
+    <g
+       id="namur"
+       transform="matrix(0.24324785,0,0,0.24324785,82.725286,179.79354)">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 55.042033,132.78323 4.44,-8.43 13.259997,0.88 -0.97,-12.28 24.7,4.95 37.51,-16.08 v 0 l 10.07,33.43 20.6,6.25 4.26,13.42 6.81,-3.17 7.26,23.12 12.16,11.71 18.67,-4.32 v 0 l 0.1,13.14 -10.06,6.47 8.95,-0.4 1.07,8.42 -36.34,21.83999 14.32,17.18 -7.51,7.78 5.21,6.14 -37.62,6.14 -2,-9.01 -4.65,20.95 -13.42,7.4 28.53,31.91 -25.46,20.9 -4.03,15.48 v 0 l -22.83,2.53 -0.86,-22.14 8,-12.88 -19.2,-17.85 10.03,-20.91 -4.1,-8.13 14.82,-21.68 -13.52,-9.6 -25.89,25.21 -0.17,26.94 -50.349997,16.22 v 0 l -13.67,-68.37 7.37,-19.33 -21.959999,-7.04 22.449999,-16.93999 37.02,-4.68 4.55,-29.48 -8.91,-5.11 z"
+         id="path2109" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="quiz"></div> <!-- Container du quiz -->
+    <div class="bouton"> <!-- Bouton envoyer -->
+        <button id="submit">ENVOYER</button>
+    </div>
+    <div id="resultats"></div> <!-- Container du résultat-->
+<script>
+
+/* MEMO
+*
+* Array.push($donnée) - Ajoute élément à la fin du tableau
+* Array.join("séparateur") - renvois un tab ou objet en string
+*/
+
+/* TRAITER AVEC UNE SAISIE INCOMPLETET
+*
+* || - «ou»
+* {} - objet vide:
+* Obtenez une référence à notre élément de réponse sélectionné OU, s'il n'existe pas, utilisez un objet vide.
+* Obtenir la valeur de ce qui était dans la première déclaration.
+* la valeur sera soit la réponse de l'utilisateur, soit undefined un utilisateur peut ignorer une question sans bloquer le quiz.
+*/
+
+    // VARIABLES
+    const quizContainer = document.getElementById('quiz'); // Selection Container du quiz
+    const resultsContainer = document.getElementById('resultats'); // Selection Container du résultat
+    const submitButton = document.getElementById('submit'); // Selection du bouton envoyer
+    const tabQuestions = [ // Tab d'objets  - tabQuestions/réponses
+        {
+            question: "Who is the strongest?",
+            tabReponses: {
+            a: "Superman",
+            b: "The Terminator",
+            c: "Waluigi, obviously"
+            },
+            bonneReponse: "c"
+        },
+        {
+            question: "What is the best site ever created?",
+            tabReponses: {
+            a: "SitePoint",
+            b: "Simple Steps Code",
+            c: "Trick question; they're both the best"
+            },
+            bonneReponse: "c"
+        },
+        {
+            question: "Where is Waldo really?",
+            tabReponses: {
+            a: "Antarctica",
+            b: "Exploring the Pacific Ocean",
+            c: "Sitting in a tree",
+            d: "Minding his own business, so stop asking"
+            },
+            bonneReponse: "d"
+        },
+        {
+            question: "question 4?",
+            tabReponses: {
+            a: "Antarctica",
+            b: "Exploring the Pacific Ocean",
+            c: "Sitting in a tree",
+            d: "Minding his own business, so stop asking"
+            },
+            bonneReponse: "d"
+        }
+    ];
+
+    // GENERATION HTML
+    function constructQuiz(){ 
+        const output = []; // Tab pour stocker les sorties html
+        tabQuestions.forEach((idQuestion, titreQuestion) => { // Pour chaque element du tab
+            const tabReponses = []; // tab des réponses
+            for(letter in idQuestion.tabReponses){ // Pour chaque réponse
+                tabReponses.push( // Ajoute les reponses a tabReponses + style
+                    `<label>
+                        <input type="radio" name="question${titreQuestion}" value="${letter}">
+                        ${letter} :
+                        ${idQuestion.tabReponses[letter]}
+                        </br>
+                    </label>`
+                );
+            }
+            output.push( // ajouter la question et ses réponses à la table des construction html
+                `<div class="question"> <strong>${idQuestion.question} </strong></div>
+                <div class="reponses"> ${tabReponses.join('')} </div>`
+            );
+        });
+        quizContainer.innerHTML = output.join('');// Ecriture du code html
+    }
+
+    // RESULTATS
+    function showResults(){
+        const answerContainers = quizContainer.querySelectorAll('.reponses'); // Selection de .reponses
+        let numCorrect = 0; // Bonne reponses
+        tabQuestions.forEach( (idQuestion, titreQuestion) => { // Pour chaque question
+            const answerContainer = answerContainers[titreQuestion]; // selectionne le container la question
+            const selector = 'input[name=question'+titreQuestion+']:checked'; // selectionne la reponse cochée
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value; // Selectionne la valeur de l'input
+            if(userAnswer===idQuestion.bonneReponse){ // Si reponse correcte
+                numCorrect++; // +1 bonne reponse   
+                answerContainers[titreQuestion].style.color = 'lightgreen'; // Modifie style 
+            }else{ // Sinon
+                answerContainers[titreQuestion].style.color = 'red'; // Modifie style 
+            }
+        });
+        resultsContainer.innerHTML = numCorrect + ' out of ' + tabQuestions.length; // Affiche nombre de bonne reponse
+    }
+
+    constructQuiz();
+    submitButton.addEventListener('click', showResults);
+
+</script>
+</body>
+</html>
+
+

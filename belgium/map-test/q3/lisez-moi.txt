@@ -1,0 +1,160 @@
+Bonjour à tous :)
+
+STRUCTURE GENERALE DU QUIZZ :
+
+- monquizza.php propose les différents quizz et pose les questions
+- monquizzb.php analyse les réponses et calcule/enregistre le score du candidat
+- monquizzc.php affiche les classements si l'utilisateur l'a autorisé
+- monquizzadmin.php sert à gérer les quizz, mais vous pouvez renommer ce fichier comme bon vous semble ou l'incorporer à d'autres pages php
+- connect.php connecte à la base de données
+- 3 tables SQL (index, questions/réponses, résultats des candidats)
+
+
+
+
+
+
+
+
+INSTALLATION (notes pour les débutants):
+
+- Pour les fichiers : dans connect.php, vous devez remplacer ce qu'il y a entre guillemets dans les 4 lignes suivantes par les infos de votre propre base données MySQL (que vous aurez activée chez votre hébergeur) : 
+
+$hostname = 'localhost'; // Nom du serveur de la base de données. 
+$username = 'root'; // nom d'utilisateur de la base (login). 
+$password = 'password'; // Mot de passe pour accéder à la base de données.
+$dbName = 'dbname'; // Nom de la base de données. 
+
+Pour tout le reste des fichiers vous pouvez l'utiliser directement tel quel, ou rajouter ce que vous voulez de design dedans... En tout cas les noms des fichiers doivent rester identiques (sauf monquizzadmin.php).
+- Pour les tables SQL: allez dans phpMyadmin, sélectionnez votre base de données, puis cliquez sur l'onglet "SQL". Copiez-collez le contenu de table.txt dans le champ vide, ou sélectionnez le chemin vers ce fichier dans l'encadré en-dessous. Des exemples sont enregistrés dans ce que je vous donne, vous n'aurez qu'à les effacer après.
+
+- Justement, parlons des 4 quizz d'exemples que vous trouverez à l'installation : 1 est en attente d'être publié (sur le Real de Madrid), 1 est réservé à une section membre (l'OM), deux sont ouverts à tous (PSG et FC Nantes). Ils montrent les différentes options affichables (donner les réponses à la fin ou non, etc.) PS: je ne connais strictement rien au foot lol
+
+
+
+
+
+
+
+POSSIBILITES :
+
+- Poser des questions auxquelles on a 4 réponses possibles.
+- Autant de quizz qu'on veut, autant de questions par quizz qu'on veut.
+- Les questions d'un quizz seront toutes affichées sur la même page.
+- Vous pouvez attribuer un nombre de points différents pour chaque bonne réponse (0 à 10).
+- Les candidats qui jouent en passant par l'espace membre (formule conseillée afin de contrôler l'identité des joueurs et profiter réellement des options) ne peuvent pas rejouer s'ils sont inscrits dans le classement (30 premiers).
+- Les quizz peuvent être mis en ligne / suspendus à tout moment
+- L'avantage du script est d'être très polyvalent : il s'intègre aussi bien chez ceux qui veulent le mettre dans un espace membre, que chez ceux qui veulent le proposer à tous. Aucune modification du corps du script n'est nécessaire, je vous l'explique plus bas.
+- Possibilité d'activer un classement des 30 premiers candidats pour les membres et/ou les invités (vous choisissez à la carte) à chaque quizz
+- Possibilité d'afficher ce classement ou non
+- Possibilité d'afficher les réponses en fin de quizz ou non
+- Toutes les options décrites sont propres à chaque quizz : certains peuvent afficher les réponses, d'autres pas, etc.
+- D'où la possibilité intéressante de proposer certains quizz à tous et d'en réserver d'autres aux membres, avec la même page php.
+
+
+CE QU'IL N'Y A PAS :
+
+- Dans l'esprit "ne pas contraindre les internautes à suivre un chemin prédeterminé", vous ne pouvez pas obliger à répondre aux différents quizz dans un certain ordre. Ou alors vous créez des liens depuis une autre page directement vers "monquizzb.php" en n'oubliant pas la variable POST $numeroquizz, mais quelqu'un qui s'y connait un peu pourra contourner. Evitez...
+- Pas de classement des quizz par niveau de difficulté. Vous n'avez qu'à appeler vos quizz "Quizz facile" et "Quizz difficile" si vous y tenez ;)
+- Pas de pagination pour un quizz qui aurait beaucoup de questions, mais de toute façon il est recommandé de ne pas dépasser 20 questions par quizz, pour le confort de l'internaute.
+- Il y a un classement par quizz, mais pas de classement global : ça ne correspondrait à rien, sauf peut-être pour comparer ceux qui auraient fait exactement les mêmes quizz.
+- Impossible qu'un candidat "loggé" puisse rejouer tout en activant l'enregistrement des scores (voir plus bas).
+- Pas de design; c'est fait pour aller sur votre site alors c'est vous qui voyez ! ;)
+
+
+CE QU'IL Y AURA SI VOUS AVEZ LA BONTE DE LE FAIRE LOL
+
+- Possibilité de supprimer certaines entrées ou la totalité du classement depuis l'interface admin : je pense à des visiteurs qui mettraient des insultes en guise de nom...
+Mais ce ne sera pas utile si vous interdisez l'enregistrement des scores des visiteurs.
+
+
+
+
+
+
+
+
+
+LES SUGGESTIONS D'UTILISATION DU QUIZZ:
+
+
+I) La meilleure façon d'utiliser le quizz est de le placer dans un espace membre où l'on peut vérifier l'identité des joueurs.
+
+La variable $nomcandidatquizz doit être renseignée par vos soins dès la page "monquizza.php", de préférence grâce aux infos d'une session en cours (mais bon c'est vous qui voyez), et vous devrez définir de la même façon cette variable à la page "monquizzb.php".
+Dans ce cas, vous devriez enregistrer les résultats du joueur et donner les réponses à la fin (histoire de ne pas le frustrer, car il ne pourra plus rejouer!).
+Je ne garantis plus aucune sécurité si vous définissez $nomcandidatquizz par un simple formulaire, surtout si ensuite vous le faites passer à "monquizzb.php" par un simple POST ou GET !
+
+Remarque importante: un membre loggé (càd : dont le nom est soumis par $nomcandidatquizz, pour ceux qui n'ont pas suivi ;^)) ne peut plus rejouer à un quizz lorsque son nom a été inscrit dans le classement.
+Si vous voulez que vos membres puissent refaire le quizz autant de fois qu'ils le veulent, il faut donc désactiver l'enregistrement des scores. Et donc afficher le classement n'a plus d'intérêt.
+
+
+
+II) Vous voulez que le quizz soit accessible à tous les internautes
+
+Dans ce cas, il n'y a pas de méthode efficace pour être sûr que quelqu'un ne joue pas plusieurs fois (vous pouvez incorporer un système de vérification d'IP si vous voulez mais ça reste peu fiable).
+Vous devriez donc désactiver l'enregistrement des résultats pour les invités (et pour les membres aussi du coup puisqu'ils pourraient d'abord faire le quizz en tant qu'invité...), et par là même ne pas afficher le classement.
+Pour cette utilisation, vous n'avez besoin de toucher à rien dans les scripts php, pensez juste à bien régler les options de vos quizz !
+
+
+
+III) Vous voulez quelques quizz publics (pour attirer l'internaute ;)) et les autres dans l'espace membre
+
+Quelle bonne idée ! Ca tombe bien, on a eu la même. Et bien vous faites comme expliqué dans le I) et le II), il suffit de bien régler les options de chaque quizz.
+
+Remarque importante : pour un quizz particulier, si vous autorisez l'enregistrement des scores pour les invités et que l'un d'eux donne un nom qui est le même que celui d'un de vos membres, celui-ci se verra dire par la suite qu'il a déjà répondu au quizz en question, même si ce n'est pas le cas.
+En revanche les visiteurs ont le droit de rejouer autant de fois qu'ils veulent, éventuellement avec des noms déjà présents dans le classement.
+
+
+
+
+
+
+
+
+
+SOUCIS CONNUS ET VOLONTAIREMENT IGNORES ;^) :
+
+- si un visiteur fait le quizz, que le classement est affiché, que son score n'est pas enregistré et qu'exactement une personne avait le même score (donc un membre loggé), alors le script ne signalera pas au visiteur qu'il y avait un ex-aequo avec lui. Je ne voulais pas alourdir encore le code, ça reste assez minime comme souci :)
+- le champ "qcm_nombre_bonnes_reponses" de la table où sont stockés les résultats est une relique plus qu'autre chose, vous pouvez le supprimer à condition de modifier la ligne 103 de "monquizzb.php". Je le laisse quand même car il pourrait se révéler utile pour ceux qui voudraient modifier le code, faire des stats...
+- un membre pourrait faire exprès de tout rater pour ne pas être classé dans les 30 premiers (encore faut-il que 30 personnes aient fait le quizz) et donc pouvoir refaire le quizz après... mais bon faut pas être parano, c'est qu'un quizz! lol Sinon vous n'avez qu'à augmenter le nombre de gens classés (ligne 100 de "monquizzb.php").
+
+c'est tout ce que je vois comme souci pour l'instant...
+
+
+
+
+LAST BUT NOT LEAST
+
+La page "monquizzadmin.php" n'est absolument pas sécurisée, il vous revient d'ajouter un mot de passe pour y accéder (je ne saurais trop vous conseiller les sessions, encore...) ou de faire en sorte qu'un internaute ne puisse pas tomber dessus.
+Question sécurité aussi, j'ai supposé que votre serveur avait la fonction "magic quotes" activée. Si ce n'est pas le cas, vous devrez addslasher la variable $nominvitequizz dans la page "monquizzb.php", qui correspond au nom d'un invité lorsque vous activez l'enregistrement des scores pour les invités. Histoire d'éviter les injections SQL.
+
+
+
+
+
+Merci à Steve2206 d'avoir initié le projet et pour sa participation :)
+
+Bonne utilisation à tous, si vous avez des commentaires ou des suggestions, n'hésitez pas à me contacter à evangun#yahoo,fr
+Pour une aide supplémentaire à l'installation... rendez-vous sur les forums ;)
+
+Evangun, Evan pour les intimes ;^)
+
+
+
+
+
+ ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+   ÿ						    ÿ
+   ÿ        ¶¶¶¶¶¶¶¶¶¶¶  ¶¶¶¶¶¶¶¶¶  ¶¶¶¶¶  ¶¶¶¶¶¶   ÿ
+   ÿ       ¶¶ºººººººº¶  ¶¶ºººººººº¶ ¶¶ººº¶ ¶¶ººº¶   ÿ
+   ÿ      ¶¶ºººº¶¶¶¶¶  ¶¶¶¶¶¶¶ººººº¶¶¶ºººº¶¶¶ººº¶   ÿ
+   ÿ     ¶¶ººººº¶            ¶¶ººººº¶¶ººººº¶¶ººº¶   ÿ
+   ÿ    ¶¶ººº¶¶¶¶    ¶¶¶¶¶¶¶  ¶¶ººººº¶ºº¶ººº¶ººº¶   ÿ
+   ÿ   ¶¶ºººº¶      ¶¶ºººº¶    ¶¶ººººººº¶¶ºººººº¶   ÿ
+   ÿ  ¶¶ºººº¶¶¶¶¶¶¶¶¶ºººº¶      ¶¶ºººººº¶¶¶ººººº¶   ÿ
+   ÿ ¶¶ººººººººººººººººº¶        ¶¶ººººº¶ ¶¶ºººº¶   ÿ
+   ÿ ¶¶¶¶¶¶¶¶¶¶¶ººººººº¶          ¶¶¶¶¶¶¶  ¶¶¶¶¶¶   ÿ
+   ÿ            ¶ººººº¶                             ÿ
+   ÿ             ¶ººº¶                              ÿ
+ ÿÿÿÿÿÿÿÿÿÿÿÿÿÿ   ¶º¶   ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+                   ¶

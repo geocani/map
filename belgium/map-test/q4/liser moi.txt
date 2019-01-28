@@ -1,0 +1,9 @@
+quiz en informatique
+realise par:
+-MARDANI Wael IA3C2
+-DHIDAH Abdalla IA3D2
+installation:
+-copier le dossier abase(qui contient la base des donnes) dans:
+C:\Programfile\EasyPHP \mysql\data
+-copier les autres fichier sur:
+C:\Programfile\EasyPHP \www pour utiliser le web local

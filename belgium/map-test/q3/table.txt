@@ -1,0 +1,66 @@
+CREATE TABLE `quizz_index` (
+  `qcm_id` tinyint(4) NOT NULL default '0',
+  `qcm_nom` varchar(20) NOT NULL default '',
+  `qcm_afficher_classement` char(3) NOT NULL default 'oui',
+  `qcm_donner_reponses` char(3) NOT NULL default 'oui',
+  `qcm_enregistrer_resultats_membres` char(3) NOT NULL default 'oui',
+  `qcm_public` char(3) NOT NULL default 'non',
+  `qcm_enregistrer_resultats_invites` char(3) NOT NULL default 'non',
+  KEY `qcm_id` (`qcm_id`)
+) ENGINE=MyISAM;
+
+
+INSERT INTO `quizz_index` VALUES (1, 'L''OM', 'oui', 'non', 'oui', 'non', 'non');
+INSERT INTO `quizz_index` VALUES (2, 'Le PSG', 'non', 'oui', 'non', 'oui', 'non');
+INSERT INTO `quizz_index` VALUES (3, 'Le FC Nantes', 'oui', 'oui', 'oui', 'oui', 'oui');
+INSERT INTO `quizz_index` VALUES (0, 'Real Madrid', 'oui', 'oui', 'oui', 'oui', 'non');
+
+
+CREATE TABLE `quizz_questions` (
+  `qcm_id` tinyint(2) NOT NULL default '0',
+  `qcm_question_id` tinyint(3) NOT NULL default '0',
+  `qcm_question` varchar(255) NOT NULL default '',
+  `qcm_propa` varchar(255) NOT NULL default '',
+  `qcm_propb` varchar(255) NOT NULL default '',
+  `qcm_propc` varchar(255) NOT NULL default '',
+  `qcm_propd` varchar(255) NOT NULL default '',
+  `qcm_coeff_question` tinyint(1) NOT NULL default '1',
+  `qcm_soluce` tinyint(4) NOT NULL default '0',
+  KEY `qcm_question_id` (`qcm_question_id`)
+) ENGINE=MyISAM;
+
+
+INSERT INTO `quizz_questions` VALUES (0, 1, 'c''est quoi le Real?', 'un mont', 'une monnaie brésilienne', 'un club de foot', 'un jeu video (le Real Tournament)', 2, 3);
+INSERT INTO `quizz_questions` VALUES (0, 2, 'Qui joue au Real?', 'Boris Becker', 'Céline Dion', 'Benoét XVI', 'Zinedine Zidane', 1, 4);
+INSERT INTO `quizz_questions` VALUES (0, 3, 'Le Real est le club de :', 'Madrid', 'Paris', 'Smallville', 'Tokyo', 3, 1);
+INSERT INTO `quizz_questions` VALUES (1, 1, 'La météo est comment ?', 'ca bronze sous les cocotiers', 'il neige', 'il fait beau', 'bah chez moi ya la clim', 4, 4);
+INSERT INTO `quizz_questions` VALUES (1, 2, 'L''OM a-t-il déjé été champion de France ?', 'je ne sais pas', 'dans quel sport ?', 'Oh moi je ne connais pas Montpellier', 'plusieurs fois', 1, 4);
+INSERT INTO `quizz_questions` VALUES (2, 1, 'Le PSG a été fondé en :', '1492', '1973', '1984', '2008', 2, 2);
+INSERT INTO `quizz_questions` VALUES (2, 2, 'Le PSG est:', 'Bon', 'Mauvais', 'Excellent', 'Ca dépend si on est parisien ou marseillais', 3, 4);
+INSERT INTO `quizz_questions` VALUES (2, 3, 'Le PSG est le club de :', 'Marseille', 'Paris', 'Marseille', 'Marseille', 1, 2);
+INSERT INTO `quizz_questions` VALUES (3, 1, 'Les Nantais sont :', 'des petits Lu', 'des canaris', 'des parisiens', 'des poissons', 2, 2);
+INSERT INTO `quizz_questions` VALUES (3, 3, 'Quelle est la couleur des Nantais?', 'Rose fushia', 'Jaune', 'Transparent', 'Ils ne portent pas de maillot', 1, 2);
+INSERT INTO `quizz_questions` VALUES (3, 3, 'Qui est le gardien du FC Nantes?', 'Grégory Coupet', 'Fabien Barthez', 'Bernard Lama', 'Mickael Landreau', 2, 4);
+INSERT INTO `quizz_questions` VALUES (3, 4, 'L''ESC Nantes s''appelle :', 'EDHEC', 'Ceram', 'Audencia', 'HEC', 3, 3);
+
+
+CREATE TABLE `quizz_reponses` (
+  `qcm_id` int(9) NOT NULL default '0',
+  `qcm_nom` varchar(255) NOT NULL default '',
+  `qcm_nombre_bonnes_reponses` tinyint(4) NOT NULL default '0',
+  `qcm_points` int(9) NOT NULL default '0'
+) ENGINE=MyISAM;
+
+
+INSERT INTO `quizz_reponses` VALUES (2, 'Evan', 3, 4);
+INSERT INTO `quizz_reponses` VALUES (1, 'Jean', 0, 0);
+INSERT INTO `quizz_reponses` VALUES (2, 'Jean', 0, 0);
+INSERT INTO `quizz_reponses` VALUES (3, 'Jean', 2, 1);
+INSERT INTO `quizz_reponses` VALUES (1, 'Ronald', 1, 3);
+INSERT INTO `quizz_reponses` VALUES (2, 'Ronald', 1, 1);
+INSERT INTO `quizz_reponses` VALUES (3, 'Ronald', 2, 2);
+INSERT INTO `quizz_reponses` VALUES (2, 'Mamie Nova', 1, 1);
+INSERT INTO `quizz_reponses` VALUES (3, 'Mamie Nova', 3, 1);
+INSERT INTO `quizz_reponses` VALUES (1, 'Mamie Nova', 0, 0);
+INSERT INTO `quizz_reponses` VALUES (3, 'Michel', 2, 2);
+INSERT INTO `quizz_reponses` VALUES (2, 'Michel', 2, 2);

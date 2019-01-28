@@ -1,0 +1,44 @@
+ body{
+          background-color: #6E0B14; 
+          
+     }
+
+ #page{
+ 	color : #1E7FCB;
+ 	text-align: center;
+ 	padding : 5px 0;
+	background-color : #fff;
+	display : inline;
+	float : left;
+	width : 100%;
+	border-top : 1px solid #d1d1d1;
+	font-size : 0.8em;
+	background-color : #f0f0f0;
+ }
+
+ #page article h2 {
+ 	color : #6E0B14;
+ 	text-align: center;
+
+ }
+
+  article h3 {
+ 	color : #f0f0f0;
+ 	text-align: center;
+
+ }
+
+ img{
+
+	margin-right : 10px;
+	margin-bottom : 5px;
+	margin-top : 15px;
+	margin-left : 0;
+ }
+
+ button{
+ 	position: center;
+ }
+
+
+

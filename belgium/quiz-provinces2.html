@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <!-- GOOGLE FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <!-- BOOTSTRAP -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css' integrity='sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS' crossorigin='anonymous'>
+    <!-- CUSTOM CSS -->
+    <link rel='stylesheet' href='assets/css/style-quiz.css'>
+    <title>TITRE</title>
+</head>
+<body>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
+    body{
+        font-size: 20px;
+        font-family: 'Work Sans', sans-serif;
+        color: rgb(129, 177, 153);
+        font-weight: 300;
+        background-color: darkslategray;
+    }
+    h1{
+        font-weight: 300;
+        margin: 0px;
+        padding: 10px;
+        font-size: 20px;
+        background-color: #444;
+        color: #fff;
+    }
+    .question{
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    .answers {
+        margin-bottom: 20px;
+        text-align: left;
+        display: inline-block;
+    }
+    .answers label{
+        display: block;
+        margin-bottom: 10px;
+    }
+    button{
+        font-family: 'Work Sans', sans-serif;
+        font-size: 15px;
+        background-color: #279;
+        color: #fff;
+        border: 0px;
+        border-radius: 3px;
+        padding: 10px;
+        cursor: pointer;
+        margin: 0 20px 20px 0;
+    }
+    button:hover{
+        background-color: #38a;
+    }
+    .slide{
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.5s;
+        border: 1px solid blue;
+    }
+    .active-slide{
+        opacity: 1;
+        z-index: 2;
+    }
+    .quiz-container{
+        position: absolute;
+        border: 2px solid red;
+        width: 100%;
+        text-align: center;
+
+    }
+    .container-image{
+        text-align: center;
+        width:100%;
+        height: 250px;
+        /* border: 1px solid red; */
+    }
+    .image{
+        width:250px;
+        height: 250px;
+    }
+    .nav{
+        position: absolute;
+        margin-top: 520px;
+        /* border: 1px solid blue;   */
+    }
+    /* #quiz{
+        border: 2px solid red;
+    } */
+</style>
+    <div class="titre">
+        <h1>Quiz des provinces</h1>
+    </div>
+    <div class="quiz-container"> <!-- Container du quiz -->
+        <div id="quiz">
+
+        </div> 
+    </div>
+    <div class="nav">
+        <button id="previous">Previous</button>
+        <button id="next">Next</button>
+        <button id="submit">Envoyer mes réponses</button> 
+    </div>
+    
+    <div id="resultats"></div> <!-- Container du résultat-->
+
+<!-- BOOTSTRAP JS -->
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js' integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut' crossorigin='anonymous'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js' integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k' crossorigin='anonymous'></script>
+<script src='js/script.js'></script>
+<script>
+
+/* MEMO
+*
+* Array.push($donnée) - Ajoute élément à la fin du tableau
+* Array.join("séparateur") - renvois un tab ou objet en string
+*
+*/
+
+/* TRAITER AVEC UNE SAISIE INCOMPLETET
+*
+* Ligne 170
+* || - «ou»
+* {} - objet vide:
+* Obtenez une référence à notre élément de réponse sélectionné OU, s'il n'existe pas, utilisez un objet vide.
+* Obtenir la valeur de ce qui était dans la première déclaration.
+* la valeur sera soit la réponse de l'utilisateur, soit undefined un utilisateur peut ignorer une question sans bloquer le quiz.
+*
+*/
+
+(function() {
+    // VARIABLES
+    const quizContainer = document.getElementById('quiz'); // Selection Container du quiz
+    const resultsContainer = document.getElementById('resultats'); // Selection Container du résultat
+    const submitButton = document.getElementById('submit'); // Selection du bouton envoyer
+    const tabQuestions = [ // Tab d'objets  - tabQuestions/réponses
+        {
+        question: "Quelle est cette province? 1c",
+        tabReponses: {
+            a: "Hainaut",
+            b: "Mons",
+            c: "Anvers",
+            d: "Liège"
+        },
+        bonneReponse: "c",
+        img: `assets/img/anvers-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 2a",
+        tabReponses: {
+            a: "Brabant wallon",
+            b: "Mons",
+            c: "Flandre occidentale",
+            d: "Liège"
+        },
+        bonneReponse: "a",
+        img: `assets/img/Brabant-wallon-700.svg `
+        },
+        {
+        question: "Quelle est cette province? 3a",
+        tabReponses: {
+            a: "Flandre orientale",
+            b: "Mons",
+            c: "Flandre occidentale",
+            d: "Namur"
+        },
+        bonneReponse: "a",
+        img: `assets/img/flandre-orientale-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 4d",
+        tabReponses: {
+            a: "Namur",
+            b: "Anvers",
+            c: "Mons",
+            d: "Liège"
+        },
+        bonneReponse: "d",
+        img: `assets/img/liege-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 5c",
+        tabReponses: {
+            a: "Braband Flamand",
+            b: "Anvers",
+            c: "Hainaut",
+            d: "Flandre Orientale"
+        },
+        bonneReponse: "c",
+        img: `assets/img/hainaut-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 6c",
+        tabReponses: {
+            a: "Brabant wallon",
+            b: "Mons",
+            c: "Flandre occidentale",
+            d: "Liège"
+        },
+        bonneReponse: "c",
+        img: `assets/img/flandre-occidentale-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 7a",
+        tabReponses: {
+            a: "limbourg",
+            b: "Flandre orientale",
+            c: "Hainaut",
+            d: "Mons"
+        },
+        bonneReponse: "a",
+        img: `assets/img/limbourg-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 8b",
+        tabReponses: {
+            a: "Liège",
+            b: "Namur",
+            c: "Hainaut",
+            d: "Mons"
+        },
+        bonneReponse: "b",
+        img: `assets/img/namur-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 9a",
+        tabReponses: {
+            a: "Braband Flamand",
+            b: "Namur",
+            c: "Anvers",
+            d: "Mons"
+        },
+        bonneReponse: "a",
+        img: `assets/img/brabant-flamand-700.svg`
+        },
+        {
+        question: "Quelle est cette province? 10d",
+        tabReponses: {
+            a: "Liège",
+            b: "Namur",
+            c: "Hainaut",
+            d: "Luxemburg"
+        },
+        bonneReponse: "d",
+        img: `assets/img/luxembourg-700.svg`
+        }
+    ];
+    
+
+    // GENERATION HTML
+    function constructQuiz(){ 
+        const output = []; // Tab pour stocker les sorties html
+        tabQuestions.forEach((idQuestion, titreQuestion) => { // Pour chaque element du tab
+            const tabReponses = []; // tab des réponses
+            for(letter in idQuestion.tabReponses){ // Pour chaque réponse
+                tabReponses.push( // Ajoute les reponses a tabReponses + style
+                
+                    `<div class="radio">
+                        <label>
+                            <input type="radio" name="question${titreQuestion}" value="${letter}">
+                            ${letter} : ${idQuestion.tabReponses[letter]}
+                        </label>
+                    </div>`
+                );
+            }
+            output.push( // ajouter la question et ses réponses à la table des construction html
+                `<div class="slide">
+                    <div class="container-image">
+                        <img class="image" src="${idQuestion.img}" alt="">
+                    </div>
+                    <div class="question"> <strong>${idQuestion.question} </strong></div>
+                    <div class="reponses"> ${tabReponses.join('')} </div>
+                    
+                </div>`
+            );
+        });
+        quizContainer.innerHTML = output.join('');// Ecriture du code html
+    }
+
+    // RESULTATS
+    function showResults(){
+        const answerContainers = quizContainer.querySelectorAll('.reponses'); // Selection de .reponses
+        let numCorrect = 0; // Bonne reponses
+        tabQuestions.forEach( (idQuestion, titreQuestion) => { // Pour chaque question
+            const answerContainer = answerContainers[titreQuestion]; // selectionne le container la question
+            const selector = 'input[name=question'+titreQuestion+']:checked'; // selectionne la reponse cochée
+            const userAnswer = (answerContainer.querySelector(selector) || {}).value; // Selectionne la valeur de l'input
+            if(userAnswer===idQuestion.bonneReponse){ // Si reponse correcte
+                numCorrect++; // +1 bonne reponse   
+                answerContainers[titreQuestion].style.color = 'lightgreen'; // Modifie style 
+            }else{ // Sinon
+                answerContainers[titreQuestion].style.color = 'red'; // Modifie style 
+            }
+        });
+        resultsContainer.innerHTML = numCorrect + ' out of ' + tabQuestions.length; // Affiche nombre de bonne reponse
+    }
+    
+    // SLIDES
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active-slide');
+        slides[n].classList.add('active-slide');
+        currentSlide = n;
+        if(currentSlide===0){
+            previousButton.style.display = 'none';
+        }
+        else{
+            previousButton.style.display = 'inline-block';
+        }
+        if(currentSlide===slides.length-1){
+            nextButton.style.display = 'none';
+            submitButton.style.display = 'inline-block';
+        }
+        else{
+            nextButton.style.display = 'inline-block';
+            submitButton.style.display = 'none';
+        }
+    }
+
+    // PAGINATION
+    function showNextSlide() {
+        showSlide(currentSlide + 1);
+    }
+    function showPreviousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    constructQuiz();
+
+    // VARIABLES APRES GENERATION HTML
+    const previousButton = document.getElementById("previous"); // Select bouton prev
+    const nextButton = document.getElementById("next"); // Select bouton next
+    const slides = document.querySelectorAll(".slide"); // Selection slide
+    let currentSlide = 0; // Disposition des slide
+
+    showSlide(0);
+
+    // EVENT BOUTON
+    submitButton.addEventListener("click", showResults);
+    previousButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
+})();
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="164.6761"
+   height="78.587059"
+   viewBox="0 0 43.570552 20.792826"
+   version="1.1"
+   id="svg6503"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="brabant-wallon-700.svg">
+  <defs
+     id="defs6497" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="93.659264"
+     inkscape:cy="-89.710662"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="950"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     objecttolerance="20"
+     guidetolerance="20"
+     gridtolerance="10" />
+  <metadata
+     id="metadata6500">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-72.343565,-206.6409)">
+    <g
+       id="brabant-wallon"
+       transform="matrix(0.24324785,0,0,0.24324785,81.591353,194.15663)">
+      <path
+         inkscape:connector-curvature="0"
+         d="m -38.017966,82.17323 10.68,-7.3 17.990001,12.66 17.12,-13.94 7.429999,5.42 23.46,-12.01 6.19,8.52 13.71,-11.1 7.569996,6.53 1.63,-17.33 22.9,-2.3 32.09,19.48 11.05,-8.25 7.3,6.07 v 0 l -7.12,33.2 v 0 l -37.51,16.08 -24.7,-4.95 0.97,12.28 -13.259996,-0.88 -4.44,8.43 v 0 l -21.63,4.02 0.6,-9.31 -11.24,-1.98 -15.539999,6.47 -29.360001,-36.13 -14.68,9 z"
+         id="path2130" />
+    </g>
+  </g>
+</svg>
